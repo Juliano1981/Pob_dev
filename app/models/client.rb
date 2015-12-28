@@ -20,5 +20,7 @@ validates :email, presence: {
     message: "L'Email doit être renseigné !"
   }
 
+has_many :projects
+
 
 end

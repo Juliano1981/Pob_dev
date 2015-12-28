@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228104145) do
+ActiveRecord::Schema.define(version: 20151228154359) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "nom"
@@ -28,5 +28,18 @@ ActiveRecord::Schema.define(version: 20151228104145) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "domaine"
+    t.string   "site_type"
+    t.string   "multilingue"
+    t.integer  "avancé"
+    t.string   "techno_type"
+    t.text     "description"
+    t.integer  "client_id"
+  end
+
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id"
 
 end
