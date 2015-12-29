@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @clients = Client.all
     @var_id = Client.last.id + 1
+    @projets = Project.all
   end
 
 

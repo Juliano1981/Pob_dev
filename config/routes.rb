@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   get 'projet/index'
 
   root 'home#index'
+
   get 'client/:id' => 'home#show'
   patch 'client/:id' => 'home#update'
   delete 'client/:id' => 'home#destroy'
   get 'client/creation/:id' => 'home#creation'
   post '/client/creation/new/:id' => 'home#clients'
-  get 'projet/:id' => 'projet#index'
 
+
+resources :projet 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
