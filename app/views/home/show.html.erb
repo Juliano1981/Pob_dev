@@ -115,7 +115,22 @@
 	<% end %>
 
 	<div style="clear:both;height:20px"></div>
-
-    <a href="/" class="btn btn-primary" >Retourner à l’index</a>
+  <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <a title="Retour à l'acceuil" href="/projet/create/#{@client.id}" class="btn btn-success"><i title="Créer un nouveau site" class="glyphicon glyphicon-pencil" ></i></a>
+    <div style="clear:both;height:20px"></div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Les Sites 
+             </th>
+        </tr>   
+         <% @projets.each do |projet| %>
+         <tr>
+            <td>
+           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/:id"><%= projet.domaine %></a>
+            </td>
+        </tr>
+        <% end %>
+    </table> 
 </div>
 </div>

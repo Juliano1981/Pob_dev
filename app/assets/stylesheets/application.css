@@ -24,6 +24,10 @@
  * Copyright (c) 2015 Daniel Eden
  */
 
+ .progress{
+margin-bottom: 0;
+ }
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @clients = Client.all
     @var_id = Client.last.id + 1
-    @projets = Project.all
+    @projets = Project.last(5)
   end
 
 
@@ -24,6 +24,7 @@ class HomeController < ApplicationController
   end
 
   def show
+    @projets = Project.where(client_id: params[:id])
     @client = Client.find(params[:id])
     @clients = Client.all
   end

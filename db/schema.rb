@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228154359) do
+ActiveRecord::Schema.define(version: 20151231184101) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "nom"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20151228154359) do
     t.string   "domaine"
     t.string   "site_type"
     t.string   "multilingue"
-    t.integer  "avancé"
+    t.integer  "avance"
     t.string   "techno_type"
     t.text     "description"
     t.integer  "client_id"

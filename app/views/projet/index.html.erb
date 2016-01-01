@@ -5,33 +5,70 @@
                 <div class="row">
 
 
-<h1>Fiche projet de monsieur <%= Client.find(params[:id]).nom %>
-  <small><%= Client.find(params[:id]).entreprise %></small>
+<h1>Tous les projets MédiaCarré <BR/>
+  <small>Nombre de projets enregistrés :<%= Project.all.count %></small>
   </h1>
 
-  <p>Tableau récapitulatif des projets en cours du client</p>
 
 
-		<div class="col-lg-12">
+            <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-wrench"></i> Liste des projets</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+<table class="table table-hover" style="text-align:center">
 
-				<table class="table">
-				 <% @projects.each do |project| %>
-				 <tr>
-				 	<td><%= project.domaine %></td>
-				 	<td><div class="progress">
-				  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-				    <span class="sr-only">60% Complete</span>
-				  </div>
-				</div>
-				  </td>	
-				 </tr>
+<tr>
+<th width=10% style="text-align:center">Domaine en construction</th>
+<th width=10% style="text-align:center">Date de création</th>
+<th width=20% style="text-align:center">Entreprise</th>
+<th width=10% style="text-align:center">Client</th>
+<th style="text-align:center"> Avancée du projet</th>
+</tr>
+<% @projets.each do |projet| %>
+<tr>
+<td><a href="/projet/<%= projet.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
+</td>
+<td>
+<% if projet.date %>
+<%= date_format(projet.date)%>
+<% end %>
+</td>
+<td><%= Client.find(projet.client_id).entreprise %></td>
+<td>M.<%= Client.find(projet.client_id).nom %></td>
+<td>
+<% if projet.avance %> 
+<% @value = projet.avance * 25 %>
 
-				 <% end %>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @value %>%;">
+  </div>
+</div>
 
-				</table>
+         <% if @value == 25 %> 
+            <p class="text-muted" style="margin:0;font-size:11px">Entretien validé (<%= @value  %> %)</p>
+        <% elsif @value == 50 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Devis accépté - Mise en route du projet (<%= @value  %> %)</P>
+         <% elsif @value == 75 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Migration client  - Dernière étape avant livraison (<%= @value  %> %)</p>
+         <% elsif @value == 100 %>
+            <p class="text-success" style="margin:0;font-size:11px">Projet finalisé  -  (<%= @value  %> %)</p>
+         <% end %>   
+<% else %>
+ <p class="text-warning" style="margin:0;font-size:11px">Entretien non effectué</p>
+ <% end %>
+</td>
+</tr>
+ <% end %>    
 
+</table>
+                                </div>
+<a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i> Retour à l'accueil </a>
+                            
+                        </div>
 
-		</div>
+</div>
 
 			</div>
 

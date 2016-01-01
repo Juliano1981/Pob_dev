@@ -34,39 +34,46 @@
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-<table class="table table-condensed">
+<table class="table table-condensed" style="text-align:center">
+    <tr>
+        <th style="text-align:center">Nom</th><th style="text-align:center">Contacter par mail</th><th style="text-align:center">Informations clients</th><th style="text-align:center">Créer un nouveau projet</th><th style="text-align:center">Type de projet</th>
+    </tr>
 <% @clients.each do |client| %>
+<tr>
+<td><a href="/client/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.entreprise %>
+</td>
+<td><a href="mailto:<%= client.email%>" class="btn btn-info"><i class="glyphicon glyphicon-envelope"></i></a>
+</td>
+<td>                               <!-- Button trigger modal -->
+        <button type="button" style="align:inline-block" class="btn btn-primary inline" data-toggle="modal" data-target="#myModal<%= client.id %>">
+        <i class="glyphicon glyphicon-search"></i>
+        </button>
 
-	<tr>
-
-        <td><a href="/projet/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.entreprise %></td>
-        <td><a href="mailto:<%= client.email%>" class="btn btn-info">Envoyer un mail</a><td>                               <!-- Button trigger modal -->
-<button type="button" style="align:inline-block" class="btn btn-primary inline" data-toggle="modal" data-target="#myModal<%= client.id %>">
-  Détail de la fiche client
-</button>
-
-<!-- Modal -->
-<div class="modal" id="myModal<%= client.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= client.entreprise %></h4>
-      </div>
-      <div class="modal-body">
-       <p>Demande client : <%= client.description %></p>
-       <p>Coordonnées client : <%= client.nom %> <%= client.prenom %></p> 
-       <p><%= client.rue %> <%= client.ville %> / <strong><%= client.tel %></strong></P>
-       <p>Type de contrat : <%= client.contrat_type %></P>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-        <a href="/client/<%= client.id %>" type="button" class="btn btn-primary">Modifier la fiche</a>
-        <a href="projet/<%= client.id %>" type="button" class="btn btn-primary">Fiche projet</a>
-      </div>
-    </div>
-  </div>
-</div>
+                        <!-- Modal -->
+                        <div class="modal" id="myModal<%= client.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel"><%= client.entreprise %></h4>
+                              </div>
+                              <div class="modal-body">
+                               <p>Demande client : <%= client.description %></p>
+                               <p>Coordonnées client : <%= client.nom %> <%= client.prenom %></p> 
+                               <p><%= client.rue %> <%= client.ville %> / <strong><%= client.tel %></strong></P>
+                               <p>Type de contrat : <%= client.contrat_type %></P>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                <a href="/client/<%= client.id %>" type="button" class="btn btn-primary">Modifier la fiche</a>
+                                <a href="projet/<%= client.id %>" type="button" class="btn btn-primary">Fiche projet</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+</td>
+<td>
+<a title="Retour à l'acceuil" href="/projet/new/<%= client.id %>" class="btn btn-success"><i title="Créer un nouveau site" class="glyphicon glyphicon-pencil" ></i></a>
 </td>
 <td>
         <span class="badge"><%= client.contrat_type %></span>
@@ -76,7 +83,7 @@
 
 </table>
                                 </div>
-<a href="client/creation/<%= @var_id %>" class="btn btn-success inline">Nouveau</a>
+<a href="client/creation/<%= @var_id %>" class="btn btn-success inline"><i class="glyphicon glyphicon-edit"></i> Nouveau</a>
 
                             
                         </div>
@@ -90,32 +97,54 @@
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-<table class="table table-condensed">
+<table class="table table-hover" style="text-align:center">
 
 <tr>
-<th width=20% style="text-align:center">Domaine en construction</th><th style="text-align:center"> Avancée du projet</th>
+<th width=10% style="text-align:center">Domaine en construction</th>
+<th width=10% style="text-align:center">Date de création</th>
+<th width=20% style="text-align:center">Entreprise</th>
+<th width=10% style="text-align:center">Client</th>
+<th style="text-align:center"> Avancée du projet</th>
 </tr>
 <% @projets.each do |projet| %>
-
-    <tr>
-
-        <td><a href="/projet/<%= projet.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %></td>
-
+<tr>
+<td><a href="/projet/<%= projet.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
+</td>
 <td>
+<% if projet.date %>
+<%= date_format(projet.date)%>
+<% end %>
+</td>
+<td><%= Client.find(projet.client_id).entreprise %></td>
+<td>M.<%= Client.find(projet.client_id).nom %></td>
+<td>
+<% if projet.avance %> 
+<% @value = projet.avance * 25 %>
 
 <div class="progress">
-  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-    <span class="sr-only">45% Complete</span>
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @value %>%;">
   </div>
 </div>
-</td>
 
+         <% if @value == 25 %> 
+            <p class="text-muted" style="margin:0;font-size:11px">Entretien validé (<%= @value  %> %)</p>
+        <% elsif @value == 50 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Devis accépté - Mise en route du projet (<%= @value  %> %)</P>
+         <% elsif @value == 75 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Migration client  - Dernière étape avant livraison (<%= @value  %> %)</p>
+         <% elsif @value == 100 %>
+            <p class="text-success" style="margin:0;font-size:11px">Projet finalisé  -  (<%= @value  %> %)</p>
+         <% end %>   
+<% else %>
+ <p class="text-warning" style="margin:0;font-size:11px">Entretien non effectué</p>
+ <% end %>
+</td>
 </tr>
  <% end %>    
 
 </table>
                                 </div>
-
+<a href="/projet" class="btn btn-success inline"><i class="glyphicon glyphicon-edit"></i> Tous les project </a>
                             
                         </div>
 

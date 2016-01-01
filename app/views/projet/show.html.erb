@@ -17,20 +17,49 @@
 				<table class="table">
 				 <% @projects.each do |project| %>
 				 <tr>
-				 	<td><%= project.domaine %></td>
-				 	<td><div class="progress">
-				  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-				    <span class="sr-only">60% Complete</span>
-				  </div>
-				</div>
-				  </td>	
-				 </tr>
+	<tr>
+<td><a href="/projet/<%= project.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= project.domaine %>
+</td>
+<td>
+<% if project.date %>
+<%= date_format(project.date)%>
+<% end %>
+</td>
+<td>
+<% if project.avance %> 
+<% @value = project.avance * 25 %>
 
-				 <% end %>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @value %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @value %>%;">
+  </div>
+</div>
 
-				</table>
+         <% if @value == 25 %> 
+            <p class="text-muted" style="margin:0;font-size:11px">Entretien validé (<%= @value  %> %)</p>
+        <% elsif @value == 50 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Devis accépté - Mise en route du projet (<%= @value  %> %)</P>
+         <% elsif @value == 75 %>
+            <p class="text-muted" style="margin:0;font-size:11px">Migration client  - Dernière étape avant livraison (<%= @value  %> %)</p>
+         <% elsif @value == 100 %>
+            <p class="text-success" style="margin:0;font-size:11px">Projet finalisé  -  (<%= @value  %> %)</p>
+         <% end %>   
+<% else %>
+ <p class="text-warning" style="margin:0;font-size:11px">Entretien non effectué</p>
+ <% end %>
+</td>
+</tr>
+ <% end %>    
 
+</table>
+                                </div>
+<a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i> Retour à l'accueil </a>
+ <a href="/client/<%= Client.find(params[:id]).id %>" class="btn btn-default inline"><i class="glyphicon glyphicon-user"></i> Fiche client </a>
+ 
+     
+                           
+                        </div>
 
+</div>
 		</div>
 
 			</div>
