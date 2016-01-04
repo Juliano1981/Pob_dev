@@ -1,0 +1,192 @@
+<div class="container">
+	<div class="col-xs-12 col-md-8">
+		 <h1><%= @projet.domaine %>
+                             </h1>
+                             <div style="clear:both"></div>
+
+             <% if flash[:success] %>
+    <div class="alert alert-success animated bounceInUp"><%= flash[:success] %></div>
+  <% end %>
+
+<h2>Phase 2: ok !</h2>
+
+       <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
+
+                      
+                            <div class="form-group">
+                                <label>Date de création </label>
+                                <%= form.text_field :date , class: "form-control" , :placeholder => "date"%>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Domaine </label>
+                                <%= form.text_field :domaine , class: "form-control" , :placeholder => "domaine"%>
+                            </div>
+
+                             <div class="form-group">
+                                <label>Type de site</label>
+                                <%= form.text_field :site_type , class: "form-control" , :placeholder => "Type de site"%>
+                             </div>
+
+                              <div class="form-group">
+                                <label>Type de développement</label>
+                                <%= form.text_field :techno_type , class: "form-control" , :placeholder => "Type de développement"%>
+                            </div>
+
+
+                          <div class="form-group">
+                            <label>Description du project</label>
+                            <%= form.text_area :description, class: "form-control"  %>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Multilingue (option)</label>
+                                <div class="radio">
+                                    <label>
+                            <%= form.radio_button :multilingue, 'Français seulement' %>  Français seulement
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                            <%= form.radio_button :multilingue, 'Français avec une langue supplémentaire' %> Français avec une langue supplémentaire
+                                    </label>
+                                </div>
+                            </div>
+                           <%= form.submit :Modifier, class: "btn btn-success" %>
+
+            <% end %>
+
+<% if Project.find(params[:id]).avance >= 2 %>
+<h2>Phase 3: OK ! <small>(le <%= date_format(Project.find(params[:id]).date_avance_2) %>)</small></h2>
+<%  else %>
+<h2>Phase 3: Réception de l'accompte </h2>
+<% end %>
+
+
+
+ <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
+
+
+                            <div class="form-group">
+                                <label>Avancé du projet</label><br/>
+                                <%= form.check_box :avance, {}, 2, 1 %> Valider la phase 3 (Signature du contrat)
+                            </div>
+                 
+                  <div class="form-group">
+                                <%= form.check_box :date_avance_2, {:checked=>true, :style => "visibility:hidden"
+}, @date, nil %> Enregistrement pour le <%= date_format(@date) %>
+                            </div>
+
+
+        <% if Project.find(params[:id]).avance >= 2 %>
+        <%= form.submit "Réception de l'accompte", class: "btn btn-success", :disabled => true %>
+        <%  else %>
+        <%= form.submit "Réception de l'accompte", class: "btn btn-success" %>
+        <% end %>
+ <% end %>
+
+
+<% if Project.find(params[:id]).avance >= 3 %>
+<h2>Phase 4: OK ! <small>(le <%= date_format(Project.find(params[:id]).date_avance_3) %>)</small></h2>
+<%  else %>
+<h2>Phase 4: Brefing avant livraison </h2>
+<% end %>
+
+ <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
+
+                      
+
+                            <div class="form-group">
+                                <label>Avancé du projet</label><br/>
+                                <%= form.check_box :avance, {}, 3, 2 %> Valider la phase 4
+                            </div>
+
+                                              <div class="form-group">
+                                <%= form.check_box :date_avance_3, {:checked=>true, :style => "visibility:hidden"
+}, @date, nil %> Enregistrement pour le <%= date_format(@date) %>
+                            </div>
+
+
+
+        <% if Project.find(params[:id]).avance >= 3 %>
+                  <%= form.submit "Validation du cycle 4", class: "btn btn-success", :disabled => true %>
+        <%  else %>
+          <%= form.submit "Validation du cycle 4", class: "btn btn-success" %>
+        <% end %>
+        <% end %>
+        
+
+
+
+
+<% if Project.find(params[:id]).avance >= 4 %>
+<h2>Phase 5: OK ! <small>(le <%= date_format(Project.find(params[:id]).date_avance_2) %>)</small></h2>
+<%  else %>
+    <h1>Phase 5: Livraison </h1>
+<% end %>
+
+ <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
+
+                      
+
+                            <div class="form-group">
+                                <label>Avancé du projet</label><br/>
+                                <%= form.check_box :avance, {}, 4, 3 %> Valider la livraison
+                            </div>
+
+                                              <div class="form-group">
+        <%= form.check_box :date_avance_4, {:checked=>true, :style => "visibility:hidden"
+}, @date, nil %> Enregistrement pour le <%= date_format(@date) %>
+                            </div>
+
+       <% if Project.find(params[:id]).avance >= 4 %>
+                   <%= form.submit "Site Livré (En ligne)", class: "btn btn-success", :disabled => true %>
+        <%  else %>
+          <%= form.submit "Site Livré (En ligne)", class: "btn btn-success" %>
+        <% end %>
+        <% end %>
+
+</div>
+ <div class="col-xs-6 col-md-4">
+    <%= form_tag "/projet/#{@projet.id}", method: "delete" do %>
+    <input data-confirm="Êtes vous sûr de vouloir supprimer ce projet PoB ?" data-method="delete" rel="nofollow" type="submit" confirm: "" class=" delete_post btn btn-danger" value="Supprimer ce projet de PoB" />
+
+	<% end %>
+
+	<div style="clear:both;height:20px"></div>
+  <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i></a>
+ <a href="/client/<%= @projet.client_id %>" class="btn btn-default inline"><i class="glyphicon glyphicon-user"></i> Fiche client </a>
+
+    <div style="clear:both;height:20px"></div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Les Sites 
+             </th>
+        </tr>   
+         <% @projets.each do |projet| %>
+         <tr>
+            <td>
+           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/:id"><%= projet.domaine %></a>
+            </td>
+        </tr>
+        <% end %>
+    </table> 
+
+     <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
+
+                      
+                            <div class="form-group">
+                                <label>Date de création </label>
+                                <%= form.text_area :note , class: "form-control" , :placeholder => "Notes "%>
+                            </div>
+
+
+          <%= form.submit "Enregistrer les notes ", class: "btn btn-success" %>
+        
+
+    <% end %>
+
+</div>
+</div>

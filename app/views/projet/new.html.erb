@@ -1,0 +1,103 @@
+<div class="container">
+	<div class="col-xs-12 col-md-8">
+		 <h1><%= @client.entreprise %> - M.
+                <%= @client.nom %>
+                             </h1>
+                             <div style="clear:both"></div>
+
+<% if Project.where(client_id: params[:id]).exists? %>
+  <div class="alert alert-info animated bounce" role="alert">
+  <i class="glyphicon glyphicon-info-sign"></i> Un ou pusieurs projets sont déjà libéllés à cette entreprise !
+  </div>
+<% else %>
+  <div class="alert alert-success" role="alert">
+   Ce client n'a pas de projet en cours
+  </div>
+<% end %>
+
+
+       <%= form_tag "/projet/new/client/#{@client.id}" , method: "post" do %>
+                      
+                                <p class="text-warning"><i class="glyphicon glyphicon-calendar"></i> Date de création de la fiche au jour du <%= date_format(@date) %></P>
+           
+
+                            <div class="form-group">
+                                <label>Domaines</label>
+                             <input type="text" name="domaine" class="form-control" placeholder="Les noms de domaines choisis" >
+
+                            </div>
+
+                             <div class="form-group">
+                                <label>Type de site</label>
+                                <input type="text" name="site_type" class="form-control" placeholder="Ex: Site vitrine, Blog, Ecommerce" >
+                            </div>
+
+                                      <div class="form-group">
+                                <label>Option Multilingue< (option)/label>
+
+                                <div class="radio">
+                                                                    <label>
+                                 <input type="radio" name="multilingue" value="Français seulement" checked > Francais seulement
+                                                                  </label>
+                                </div>
+
+                                  <div class="radio">
+                                  <label>                           
+                                 <input type="radio" name="multilingue" value="Français avec une langue supplémentaire"> Français + une langue supplémentaire
+                                    </label>
+                                   </div>
+                                
+                                   </div>
+
+
+
+                             <div class="form-group">
+                                <label>Type de développement</label>
+                                <input type="text" name="techno_type" class="form-control" placeholder="Compilation Bootstrap, CMS, Ruby On Rails ..." >
+                            </div>
+
+                            <div class="form-group">
+                            <label>Demandes particulières - Exemple d'agencement </label>
+                            <textarea name="description" class="form-control" rows=20 >
+                            </textarea>
+                            </div>
+
+                             <div class="form-group">
+                                <label>Entretien validé</label>
+
+                                <div class="radio">
+                            <label>
+                            <input type="checkbox" name="avance" value="1" checked > Entretien avec le responsable projet sera enrigistré à ce jour
+                            </label>
+                                </div>
+                                
+                             </div>
+
+
+                           <input type="submit" class="btn btn-success" value="Valider l'entretien"> 
+                      
+            <% end %>
+
+</div>
+ <div class="col-xs-6 col-md-4">
+
+	<div style="clear:both;height:20px"></div>
+ <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <a title="Retour à l'acceuil" href="/projet/create/#{@client.id}" class="btn btn-success"><i title="Créer un nouveau site" class="glyphicon glyphicon-pencil" ></i></a>
+    <div style="clear:both;height:20px"></div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Les Sites 
+             </th>
+        </tr>   
+         <% Project.where(client_id: params[:id]).each do |projet| %>
+         <tr>
+            <td>
+           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/:id"><%= projet.domaine %></a>
+            </td>
+        </tr>
+        <% end %>
+    </table> 
+</div>
+</div>

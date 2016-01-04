@@ -1,0 +1,136 @@
+<div class="container">
+	<div class="col-xs-12 col-md-8">
+		 <h1><%= @client.entreprise_was %>
+
+
+
+	                     	<img  class="img-rounded" src="<%= @client.avatar.url(:thumb) %>" />
+                             </h1>
+                             <div style="clear:both"></div>
+
+             <% if flash[:success] %>
+    <div class="alert alert-success animated bounceInUp"><%= flash[:success] %></div>
+  <% end %>
+
+
+       <%= form_for @client, :url => "/client/#{@client.id}", :html => { :multipart => true } do |form| %>
+
+                      
+                            <div class="form-group">
+                                <label>Nom *</label>
+                                <%= form.text_field :nom , class: "form-control" , :placeholder => "Nom"%>
+                                
+                                 <% if @client.errors[:nom].first %>
+
+                                 <div style="margin:1%" class="alert alert-danger animated shake" role="alert"><%= @client.errors[:nom].first %></div>
+
+                                 <% end %>
+
+                                <p class="help-block">Nom du propriétaire de l'entreprise</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Prénom</label>
+                                <%= form.text_field :prenom , class: "form-control" , :placeholder => "Prénom"%>
+                            </div>
+
+                             <div class="form-group">
+                                <label>Nom de l'entreprise *</label>
+                                <%= form.text_field :entreprise , class: "form-control" , :placeholder => "Entreprise ou Raison social"%>
+                                 <% if @client.errors[:entreprise].first %>
+
+                                 <div style="margin:1%" class="alert alert-danger animated shake" role="alert"><%= @client.errors[:entreprise].first %></div>
+
+                                 <% end %>
+
+                            </div>
+                            
+
+                           <div class="form-group">
+                                <label>Email de contact *</label>
+                            <%= form.email_field :email, class: "form-control" , :placeholder => "email"%>
+                            
+                                <% if @client.errors[:email].first %>
+
+                                 <div style="margin:1%" class="alert alert-danger animated shake" role="alert"><%= @client.errors[:email].first %></div>
+
+                                 <% end %>
+
+                            </div>
+
+
+                              <div class="form-group">
+                                <label>Adresse</label>
+                                <%= form.text_field :rue , class: "form-control" , :placeholder => "Numéro de rue + Rue de facturation"%>
+                            </div>
+
+                             <div class="form-group">
+                                <label>Ville</label>
+                                <%= form.text_field :ville , class: "form-control" , :placeholder => "Ville"%>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Numéro de tel </label>
+                                <%= form.text_field :tel , class: "form-control" , :placeholder => "Ex : 0613707075"%>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Logo de l'entreprise</label>
+		                        <%= form.file_field :avatar %>
+                            </div>
+
+                            <div class="form-group">
+                            <label>Description du project</label>
+                            <%= form.text_area :description, class: "form-control"  %>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Type de demande</label>
+                                <div class="radio">
+                                    <label>
+                            <%= form.radio_button :contrat_type, 'Création simple', :checked => true %>  Création Simple
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                            <%= form.radio_button :contrat_type, 'Création + hébergement' %>  Création avec hébergement
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                            <%= form.radio_button :contrat_type, 'Hébergement simple'  %>  Hébergement Simple
+                                    </label>
+                                </div>
+                            </div>
+                           <%= form.submit :Modifier, class: "btn btn-success" %>
+
+            <% end %>
+</div>
+ <div class="col-xs-6 col-md-4">
+    <%= form_tag "/client/#{@client.id}", method: "delete" do %>
+    <input data-confirm="Êtes vous sûr de vouloir supprimer ce client ?" data-method="delete" rel="nofollow" type="submit" confirm: "" class=" delete_post btn btn-danger" value="Supprimer cette fiche client" />
+
+	<% end %>
+
+	<div style="clear:both;height:20px"></div>
+    <a href="/" class="btn btn-primary" ><i class="glyphicon glyphicon-repeat"></i></a>
+    <a title="Retour à l'acceuil" href="/projet/create/#{@client.id}" class="btn btn-success"><i title="Créer un nouveau site" class="glyphicon glyphicon-pencil" ></i></a>
+    <div style="clear:both;height:20px"></div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Les Sites 
+             </th>
+        </tr>   
+         <% @projets.each do |projet| %>
+         <tr>
+            <td>
+           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/:id"><%= projet.domaine %></a>
+            </td>
+        </tr>
+        <% end %>
+    </table> 
+</div>
+</div>
