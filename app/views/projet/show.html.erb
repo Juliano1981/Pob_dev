@@ -18,7 +18,7 @@
 				 <% @projects.each do |project| %>
 				 <tr>
 	<tr>
-<td><a href="/projet/<%= project.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= project.domaine %>
+<td><a href="/projet/<%= project.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= project.domaine %>
 </td>
 <td>
 <% if project.date %>
@@ -54,7 +54,7 @@
                                 </div>
 <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i> Retour à l'accueil </a>
  <a href="/client/<%= Client.find(params[:id]).id %>" class="btn btn-default inline"><i class="glyphicon glyphicon-user"></i> Fiche client </a>
- 
+
      
                            
                         </div>

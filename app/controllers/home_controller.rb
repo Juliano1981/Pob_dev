@@ -41,8 +41,8 @@ def update
 
 
   def destroy
-    puts params[:id]
     Client.find(params[:id]).destroy
+    Project.where(client_id: params[:id]).destroy_all
     redirect_to "/"
   end
 

@@ -40,7 +40,7 @@
     </tr>
 <% @clients.each do |client| %>
 <tr>
-<td><a href="/client/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.entreprise %>
+<td><a href="/projet/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.entreprise %>
 </td>
 <td><a href="mailto:<%= client.email%>" class="btn btn-info"><i class="glyphicon glyphicon-envelope"></i></a>
 </td>
@@ -108,7 +108,7 @@
 </tr>
 <% @projets.each do |projet| %>
 <tr>
-<td><a href="/projet/<%= projet.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
+<td><a href="/projet/<%= projet.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
 </td>
 <td>
 <% if projet.date %>
@@ -150,6 +150,52 @@
 
 </div>
 
+    <div class="row">
+       <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Orders!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Support Tickets!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+    </div>                       
 
   <div style="clear:both;height:20em"></div>
                 <div class="row">

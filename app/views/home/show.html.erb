@@ -127,7 +127,7 @@
          <% @projets.each do |projet| %>
          <tr>
             <td>
-           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/:id"><%= projet.domaine %></a>
+           <i class="glyphicon glyphicon-ok" style="color:green"></i> <a href="/projet/<%= projet.id %>/edit"> <%= projet.domaine %></a>
             </td>
         </tr>
         <% end %>

@@ -28,7 +28,7 @@
 </tr>
 <% @projets.each do |projet| %>
 <tr>
-<td><a href="/projet/<%= projet.client_id %>"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
+<td><a href="/projet/<%= projet.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
 </td>
 <td>
 <% if projet.date %>
