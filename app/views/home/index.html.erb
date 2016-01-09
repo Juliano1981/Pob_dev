@@ -108,7 +108,7 @@
 </tr>
 <% @projets.each do |projet| %>
 <tr>
-<td><a href="/projet/<%= projet.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
+<td><a data-no-turbolink='true' href="/projet/<%= projet.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
 </td>
 <td>
 <% if projet.date %>
