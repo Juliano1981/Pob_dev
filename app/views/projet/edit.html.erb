@@ -36,7 +36,7 @@
 
                           <div class="form-group">
                             <label>Description du project</label>
-                            <%= form.text_area :description, class: "form-control"  %>
+                            <%= form.text_area :description, :class => "tinymce", :rows => 40, :cols => 120 %>
 
                             </div>
 
@@ -56,7 +56,7 @@
                            <%= form.submit :Modifier, class: "btn btn-success" %>
 
             <% end %>
-
+<%= tinymce %>
 <% if Project.find(params[:id]).avance >= 2 %>
 <h2>Phase 3: OK ! <small>(le <%= date_format(Project.find(params[:id]).date_avance_2) %>)</small></h2>
 <%  else %>
