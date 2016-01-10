@@ -24,9 +24,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name %>">
 
-	 <div id="wrapper">
+     <div id="wrapper">
+
+
+            <% if user_signed_in? %>
+
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse" role="navigation">
@@ -42,78 +46,54 @@
             </div>
             <!-- Top Menu Items -->
 
-            <% if user_signed_in? %>
+                       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                     <%= link_to "Tableau de bord", root_path %>
+                    </li>
+                    <li>
+                     <%= link_to "Les projets PoB", projet_index_path %>
+                    </li>
+                    <li>
+                     <%= link_to "Les projets PoB", projet_index_path %>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> La Base clients<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Les clients</a>
+                            </li>
+                            <li>
+                                <a href="#">Les clients</a>
+                            </li>
+                        </ul>
+                    </li>
+            
+                </ul>
+            </div>
 
-
-            <ul class="nav navbar-right top-nav">              
+                        <ul class="nav navbar-right top-nav">              
                 <li class="dropdown">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="divider"></li>
                         <li>
-                     <%= link_to  "sign out", destroy_user_session_path, method: :delete, form_class:"fa fa-fw fa-power-off" %><br/>
+                     <%= link_to  "Se déconnecter", destroy_user_session_path, method: :delete, form_class:"fa fa-fw fa-power-off" %><br/>
                         </li>
                     </ul>
                 </li>
             </ul>
+            <!-- /.navbar-collapse -->
+        </nav>
+
 
             <% end %>
 
 
 
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-
-              <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-              </ol>
-
-<div class="notice"><%= notice %></div>
-<div class="notice"><%= alert %></div>
+ 
+<div class="bg-primary notice"><%= notice %></div>
+<div class="bg-primary notice"><%= alert %></div>
 
 <%= yield %>
 

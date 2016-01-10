@@ -1,12 +1,12 @@
 
 <div class="container">
-
-
-<div class="jumbotron">
-<h2><i class="glyphicon glyphicon-lock"></i> Se connecter est une obligation !</h2>
-</div>
- <div class="col-xs-12 col-md-8">
-
+ <div class="col-md-6 col-md-offset-3 border-login">
+<h2>Project On Base</h2>
+<p><i class="glyphicon glyphicon-lock"></i> Se connecter est une obligation !</p>
+<p class="text-muted">Ce CRM est la propriété du collectif MediaCarré. Groupement de développeurs Web -> <a href="http://www.julien-carre.com">Julien Carré</a> & <a href="http://www.jeremy-carre.com">Jérémy Carré</a>.</P>
+  <p>
+ <div class="form-group">
+  <center>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -28,8 +28,9 @@
     <%= f.submit "Se connecter à PoB" %>
   </div>
 <% end %>
-
+  </div>
 <%= render "devise/shared/links" %>
+<p class="text-info">Copyright J.Carré - 2016.</P>
 </div>
-
+</center>
 </div>

@@ -16,6 +16,27 @@
 
 @charset "UTF-8";
 
+
+.border-login {
+border: 1px solid gray;
+margin-top: 20px ;
+border-radius:3px;
+background: #fff;
+}
+
+body.sessions{
+background-image: url(http://www.planwallpaper.com/static/images/colorful-triangles-background_yB0qTG6.jpg);
+}
+
+
+
+.white{
+  background: #fff;
+  border-radius:3px;
+  padding:1em;
+  margin:1em 0;
+}
+
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.0
