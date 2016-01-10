@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   
+before_action :authenticate_user!
+
   def index
     @clients = Client.all
     @var_id = Client.last.id + 1

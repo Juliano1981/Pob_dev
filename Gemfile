@@ -55,4 +55,5 @@ group :development do
 end
 gem "paperclip", "~> 4.3"
 gem 'tinymce-rails'
+gem 'devise', github: 'plataformatec/devise'
 
