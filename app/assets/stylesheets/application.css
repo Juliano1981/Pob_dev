@@ -16,6 +16,39 @@
 
 @charset "UTF-8";
 
+.padding{
+padding:0.4%;
+}
+
+.bordure{
+border:1px solid gray ;
+padding:2%;
+border-radius: 5px;
+min-height: 220px;
+}
+
+.border_light{
+border-right-width:1px;
+border-right-style:dotted;
+border-right-color:gray ;
+
+}
+
+.etape{
+border-top-width:1px;
+border-top-style:dotted;
+border-top-color:gray ;
+padding:2% 0;
+
+}
+
+h2.content{
+text-align:center;
+color:#000;
+font-size: 2em;
+text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+margin:0;
+}
 
 .border-login {
 border: 1px solid gray;

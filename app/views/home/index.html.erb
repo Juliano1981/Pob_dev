@@ -111,9 +111,11 @@
 <td><a data-no-turbolink='true' href="/projet/<%= projet.id %>/edit"><i class="fa fa-fw fa-calendar"></i> <%= projet.domaine %>
 </td>
 <td>
-<% if projet.date %>
-<%= date_format(projet.date)%>
-<% end %>
+        <% if projet.date_avance_2 %>
+        <%= date_format(projet.date_avance_2)%>
+        <% else %>
+        <p class="text-muted">En attente</P>
+        <% end %> 
 </td>
 <td><%= Client.find(projet.client_id).entreprise %></td>
 <td>M.<%= Client.find(projet.client_id).nom %></td>
