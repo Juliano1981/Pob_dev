@@ -1,6 +1,25 @@
-toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
+menubar: false
+content_security_policy: "default-src 'self'"
+browser_spellcheck : true
+paste_merge_formats: true
+paste_retain_style_properties: all
+body_class: tinymce-editor
+toolbar: 
+ - insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image
+ - print preview media | forecolor backcolor emoticons
 plugins:
-  - image
   - link
+  - paste
+  - importcss
+  - autolink
+  - lists
+  - wordcount
+  - colorpicker
+  - hr
+  - preview
+  - searchreplace
+  - textcolor
+  - advlist autolink lists link image charmap print preview hr anchor pagebreak
+  - searchreplace wordcount visualblocks visualchars code fullscreen
+  - insertdatetime media nonbreaking save table contextmenu directionality
+  - emoticons template paste textcolor colorpicker textpattern imagetools
