@@ -5,7 +5,7 @@ paste_merge_formats: true
 paste_retain_style_properties: all
 body_class: tinymce-editor
 toolbar: 
- - insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image
+ - insertfile undo redo | fontselect | fontsizeselect | bold | italic | underline | strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent 
  - print preview media | forecolor backcolor emoticons
 plugins:
   - link
