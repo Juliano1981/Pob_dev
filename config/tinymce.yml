@@ -1,25 +1,48 @@
+
+
+  # Spree Editor TinyMCE Configuration
+#
+# These are the options that will automatically be passed into the tinyMCE.init function
+# whenever TinyMCE is loaded in one of your spree pages. Please edit this file to
+# customise your TinyMCE setup in your spree installation. If you wish to see the full
+# range of configuration options then please go here:
+#
+#    http://www.tinymce.com/wiki.php/configuration
+
+# TinyMCE Options
 menubar: false
-content_security_policy: "default-src 'self'"
-browser_spellcheck : true
-paste_merge_formats: true
-paste_retain_style_properties: all
-body_class: tinymce-editor
-toolbar: 
- - insertfile undo redo | fontselect | fontsizeselect | bold | italic | underline | strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent 
- - print preview media | forecolor backcolor emoticons
+mode: "exact"
+theme: "modern"
+skin: "lightgray"
+schema: "html5-strict"
+element_format: "html"
+resize: true
 plugins:
-  - link
-  - paste
-  - importcss
-  - autolink
-  - lists
-  - wordcount
-  - colorpicker
-  - hr
+  - layer
+  - table
+  - insertdatetime
   - preview
+  - media
   - searchreplace
-  - textcolor
+  - contextmenu
+  - paste
+  - directionality
+  - fullscreen
+  - noneditable
+  - visualchars
+  - nonbreaking
+  - template
   - advlist autolink lists link image charmap print preview hr anchor pagebreak
   - searchreplace wordcount visualblocks visualchars code fullscreen
   - insertdatetime media nonbreaking save table contextmenu directionality
   - emoticons template paste textcolor colorpicker textpattern imagetools
+
+# Each line is a toolbar
+toolbar:
+  - cut copy paste pastetext pasteword | search replace | undo redo | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor emoticons | charmap media 
+  - bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | sub sup | bullist numlist | outdent indent blockquote | tablecontrols | hr removeformat visualaid
+  - fullscreen | print preview media 
+  
+
+
+
