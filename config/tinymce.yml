@@ -39,8 +39,8 @@ plugins:
 
 # Each line is a toolbar
 toolbar:
-  - cut copy paste pastetext pasteword | search replace | undo redo | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor emoticons | charmap media 
-  - bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | sub sup | bullist numlist | outdent indent blockquote | tablecontrols | hr removeformat visualaid
+  - cut copy paste pastetext pasteword | search replace | undo redo | link unlink anchor image cleanup help code | insertdate inserttime preview | charmap media 
+  - styleselect formatselect fontselect fontsizeselect | forecolor backcolor | bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | sub sup | bullist numlist | outdent indent blockquote | tablecontrols | hr removeformat visualaid
   - fullscreen | print preview media 
   
 

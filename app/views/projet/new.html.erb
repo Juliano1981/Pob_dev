@@ -1,9 +1,18 @@
 <div class="container">
-	<div class="col-xs-12 col-md-8">
-		 <h1><%= @client.entreprise %> - M.
-                <%= @client.nom %>
-                             </h1>
-                             <div style="clear:both"></div>
+
+     <div class="page-header">
+      <div class="row">
+       <div class="col-xs-12 col-md-8">
+         <h1> <i class="glyphicon glyphicon-list-alt"></i> Création fiche projet</h1>
+           <small><i class="glyphicon glyphicon-tags"></i> <%= @client.entreprise %></small></h1>
+           <p class="bg-primary padding"><i class="glyphicon glyphicon-bookmark"></i>M.
+                <%= @client.nom %></p>
+          </div> 
+           </div> 
+       </div>
+
+<div class="etape">
+
 
 <% if Project.where(client_id: params[:id]).exists? %>
   <div class="alert alert-info animated bounce" role="alert">
@@ -20,20 +29,26 @@
                       
                                 <p class="text-warning"><i class="glyphicon glyphicon-calendar"></i> Date de création de la fiche au jour du <%= date_format(@date) %></P>
            
-
+                        <div class="row">
+                           <div class="col-xs-6 col-md-4 border_light">
                             <div class="form-group">
-                                <label>Domaines</label>
+                              <h4><i class="glyphicon glyphicon-asterisk"></i>Domaines</h4>
+                              <p class="text-muted">Le nom de domaine retenu par le demandeur d'ordre. Ce nom peut être encore modifié (sous certaines conditions)</p>
                              <input type="text" name="domaine" class="form-control" placeholder="Les noms de domaines choisis" >
-
+                        </div>
                             </div>
-
+                            
+                            <div class="col-xs-6 col-md-4 border_light">
                              <div class="form-group">
-                                <label>Type de site</label>
+                                <h4><i class="glyphicon glyphicon-cog"></i> Type de site</h4>
+                                <p class="text-muted">Le type de site défini. Les sites vitrines avec espaces membres doivent être requalifiés en plateforme collaborative.</p>
                                 <input type="text" name="site_type" class="form-control" placeholder="Ex: Site vitrine, Blog, Ecommerce" >
                             </div>
+                          </div>
 
-                                      <div class="form-group">
-                                <label>Option Multilingue< (option)/label>
+                          <div class="col-xs-6 col-md-4 border_light">
+                             <div class="form-group">
+                                <h4><i class="glyphicon glyphicon-globe"></i> Multilingue (option)</h4>
 
                                 <div class="radio">
                                                                     <label>
@@ -48,16 +63,20 @@
                                    </div>
                                 
                                    </div>
+                            </div>
+                          </div>
 
 
 
                              <div class="form-group">
-                                <label>Type de développement</label>
+                                <h4><i class="glyphicon glyphicon-cog"></i> Solution technique retenue</h4>
+                                 <p class="text-muted">Type de développement, solution technique. Les CMS doivent être utilisés uniquement lorsque le demandeur d'ordre à pour projet de mettre à jour son contenu.</p>
                                 <input type="text" name="techno_type" class="form-control" placeholder="Compilation Bootstrap, CMS, Ruby On Rails ..." >
                             </div>
 
                             <div class="form-group">
-                            <label>Demandes particulières - Exemple d'agencement </label>
+                            <h4><i class="glyphicon glyphicon-pencil"></i> Cahier des charges - Exemple d'agencement </h4>
+                             <p class="text-muted">Cet espace est destiné à se substituer à un cahier des charges.</p>
                             <textarea name="description" class="tinymce" rows=20 >
                             </textarea>
                             </div>
@@ -79,11 +98,12 @@
             <% end %>
 <%= tinymce %>
 </div>
- <div class="col-xs-6 col-md-4">
+
+
 
 	<div style="clear:both;height:20px"></div>
- <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i></a>
-    <a title="Retour à l'acceuil" href="/projet/create/#{@client.id}" class="btn btn-success"><i title="Créer un nouveau site" class="glyphicon glyphicon-pencil" ></i></a>
+ <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i> Retour à la page d'accueil</a>
+
     <div style="clear:both;height:20px"></div>
     <table class="table table-striped">
         <tr>
@@ -99,5 +119,5 @@
         </tr>
         <% end %>
     </table> 
-</div>
+
 </div>

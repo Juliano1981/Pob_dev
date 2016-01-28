@@ -6,6 +6,7 @@ before_action :authenticate_user!
     @clients = Client.all
     @var_id = Client.last.id + 1
     @projets = Project.last(5)
+    @tarifs= Project.where.not(tarif: nil)
   end
 
 

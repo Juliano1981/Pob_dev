@@ -36,21 +36,35 @@
 
                            <div class="col-xs-6 col-md-4 border_light">
                              <div class="form-group">
-                                <h4><i class="glyphicon glyphicon-asterisk"></i>
+                                <h4><i class="glyphicon glyphicon-cog"></i>
                                 Le type de site internet</h4>
-                                <p class="text-muted">Le type de site défini. Les sites vitrines avec espaces membres ne doivent être requalifiés en plateforme collaborative.</p>
+                                <p class="text-muted">Le type de site défini. Les sites vitrines avec espaces membres doivent être requalifiés en plateforme collaborative.</p>
                                 <%= form.text_field :site_type , class: "form-control" , :placeholder => "Type de site"%>
                              </div>
                           </div>
 
+
                            <div class="col-xs-6 col-md-4">
                               <div class="form-group">
-                                <h4><i class="glyphicon glyphicon-asterisk"></i> Solution technique</h4>
+                                <h4><i class="glyphicon glyphicon-asterisk"></i> Solution technique retenue</h4>
                                 <p class="text-muted">Type de développement, solution technique. Les CMS doivent être utilisés uniquement lorsque le demandeur d'ordre à pour projet de mettre à jour son contenu.</p>
                                 <%= form.text_field :techno_type , class: "form-control" , :placeholder => "Type de développement"%>
                             </div>
                           </div>
+
                   </div>
+
+                 <div class="row">
+                          <div class="col-xs-6 col-md-4">
+                              <div class="form-group">
+                                <h4><i class="glyphicon glyphicon-euro"></i> Tarif retenu pour projet</h4>
+                                <p class="text-muted">Prix indiqué correspond à la tarification TTC formulé sur le devis.</p>
+                                <%= form.text_field :tarif , class: "form-control" , :placeholder => "Ex : 1000"%>
+                            </div>
+                          </div>
+
+                          </div>
+
                           <div class="form-group etape">
                             <h4><i class="glyphicon glyphicon-edit"></i> Suivi du projet client</h4>
                               <p class="text-muted">Élément essentiel du suivi, cet espace doit tracer tous les éléments de construction.</p><p class="text-warning"> Chaque phase doit être renseignée avec soin.</p>
@@ -155,5 +169,8 @@ Site en ligne depuis le <small> <%= date_format(Project.find(params[:id]).date_a
 
     <% end %>
 </div>
+
+<div style="clear:both;height:20px"></div>
+ <a href="/" class="btn btn-info inline"><i class="glyphicon glyphicon-chevron-left"></i> Retour à la page d'accueil</a>
 </div>
 </div>
