@@ -169,13 +169,30 @@
                                         </thead>
                                         <tbody>
                                 <% @projets.each do |projet| %>
+                                <% if projet.date_avance_2 %>
                                     <% d=  projet.date_avance_2 %>
+                                <% end %>
                                             <tr>
 
                                                 <td style="text-align:center"><%= projet.domaine %></td>
-                                                <td style="text-align:center"><%= date_format(d+ 40.days) %></td>
-                                                <td style="text-align:center"><%= date_format(d) %></td>
-                                                <td style="text-align:center"><%= projet.tarif %> €</td>
+                                                
+                                                    <% if projet.date_avance_2 %>
+                                                            <td style="text-align:center">
+                                                            <%= date_format(d+ 40.days) %></td>
+                                                             <td style="text-align:center">
+                                                            <%= date_format(d) %></td>
+                                                            <% else %>
+                                                            <td style="text-align:center"colspan='2'>
+                                                            <%= 'Devis non validé' %>
+                                                            </td>
+                                                    <% end %>
+                                               
+                                                <td style="text-align:center">
+                                                    <% if projet.tarif %>
+                                                    <%= projet.tarif %> €</td>
+                                                    <% else %>
+                                                    <%= 'Aucun prix fixé' %>
+                                                    <% end %>
 
                                             </tr>
                                 <% end %>
