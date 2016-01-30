@@ -91,7 +91,7 @@ Phase 3</h2>
                
                <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
 
-               <%= form.submit "L'acompte à été encaissé le #{date_format(@projet.date_avance_2)}", class: "btn btn-success", :disabled => true %>
+               <%= form.submit "L'acompte à été encaissé ", class: "btn btn-success", :disabled => true %>
                <% end %>
               <%  else %>
               
