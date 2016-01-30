@@ -113,7 +113,7 @@ Phase 3</h2>
 
                       <% if Project.find(params[:id]).avance >= 3 %>
                       <h2 class="content"><i class="glyphicon glyphicon-ok"></i>
-Phase 4 <small> validée le <%= date_format(Project.find(params[:id]).date_avance_3) %></small></h2>
+Phase 4 <small> validée </small></h2>
                       <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
                       <p class="text-muted">La construction est validée par le demendeur d'ordre. La mise en ligne est imminente.</P>
                        <%= form.submit "Phase 4 validée", class: "btn btn-success", :disabled => true %>
