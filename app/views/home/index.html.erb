@@ -171,16 +171,43 @@
                                 <% @projets.each do |projet| %>
                                 <% if projet.date_avance_2 %>
                                     <% d=  projet.date_avance_2 %>
+                                    <% d_fin= projet.date_avance_4 %>
+                                    <% d_renouve= date_format(d_fin+ 1.year) %>
+                                    <% d_warning= date_format(Time.now + 11.months) %>
                                 <% end %>
-                                            <tr>
+                                           
 
-                                                <td style="text-align:center"><%= projet.domaine %></td>
+                      <% if Project.find(projet.id).avance >= 4 %>
+
+                         <% if d_renouve <=  d_warning %>
+                           <tr class="danger">
+                            <% else %>
+                            <tr class="success">
+                         <% end %>
+                                  <td style="text-align:center"><%= projet.domaine %></td>
+                                                
+
+                                                            <td style="text-align:center" colspan="2">
+                                                           Le domaine devra être renouvelé avant le <%= d_renouve %></td> 
+
+                                                <td style="text-align:center">
+                                                    <% if projet.tarif %>
+                                                    <%= projet.tarif %> €</td>
+                                                    <% else %>
+                                                    <%= 'Aucun prix fixé' %>
+                                                    <% end %>
+
+                     <% else %>
+                             <tr>
+
+
+                                                  <td style="text-align:center"><%= projet.domaine %></td>
                                                 
                                                     <% if projet.date_avance_2 %>
                                                             <td style="text-align:center">
-                                                            <%= date_format(d+ 40.days) %></td>
+                                                           <%= date_format(d) %>  </td>
                                                              <td style="text-align:center">
-                                                            <%= date_format(d) %></td>
+                                                           <%= date_format(d+ 40.days) %></td>
                                                             <% else %>
                                                             <td style="text-align:center"colspan='2'>
                                                             <%= 'Devis non validé' %>
@@ -193,6 +220,9 @@
                                                     <% else %>
                                                     <%= 'Aucun prix fixé' %>
                                                     <% end %>
+                      <% end %>
+
+                              
 
                                             </tr>
                                 <% end %>

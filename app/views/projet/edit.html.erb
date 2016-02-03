@@ -1,6 +1,29 @@
 <div class="container">
-		 <div class="page-header">
-      <div class="row">
+  <% if Project.find(params[:id]).avance >= 4 %>
+   <div class="page-header" style="background:#F2F2F2;padding:2%;border: 2px solid #OOO;">
+
+ <div class="row">
+       <div class="col-xs-12 col-md-8">
+         <h1> <i class="glyphicon glyphicon-list-alt"></i> Projet livré </h1>
+           <small><i class="glyphicon glyphicon-tags"></i> <%= @projet.domaine %></small></h1>
+           <p class="bg-warning padding" style="color:#000"><i class="glyphicon glyphicon-bookmark"></i>Entreprise : <%= Client.find(@projet.client_id).entreprise %><br/>
+          Cette fiche fait office de <i>"suivi client"</i>.
+           </p>
+          </div> 
+              <div class="col-xs-6 col-md-4">
+                <%= form_tag "/projet/#{@projet.id}", method: "delete" do %>
+                <input data-confirm="Êtes vous sûr de vouloir supprimer ce projet PoB ?" data-method="delete" rel="nofollow" type="submit" confirm: "" class=" delete_post btn btn-danger" value="Supprimer ce projet de PoB" />
+                <% end %>
+                <br/>
+               <a href="/client/<%= @projet.client_id %>" class="btn btn-default inline"><i class="glyphicon glyphicon-user"></i> Fiche client </a>
+            </div>
+           </div> 
+       </div>
+
+    <% else %>
+   <div class="page-header" style="padding:2%">
+
+     <div class="row">
        <div class="col-xs-12 col-md-8">
          <h1> <i class="glyphicon glyphicon-list-alt"></i> Suivi de projet</h1>
            <small><i class="glyphicon glyphicon-tags"></i> <%= @projet.domaine %></small></h1>
@@ -15,6 +38,8 @@
             </div>
            </div> 
        </div>
+    <% end %>
+     
     
 
              <% if flash[:success] %>
@@ -140,7 +165,7 @@ Phase 4 <small> validée </small></h2>
 
                       <% if Project.find(params[:id]).avance >= 4 %>
                       <h2 class="content"><i class="glyphicon glyphicon-ok"></i>
-Site en ligne depuis le <small> <%= date_format(Project.find(params[:id]).date_avance_2) %>)</small></h2>
+Site en ligne depuis le <small> <%= date_format(Project.find(params[:id]).date_avance_2) %></small></h2>
                       <p class="text-success"> Le site est en ligne. Le solde du paiement à été effectué.</P>
                       <%  else %>
                       <h2 class="content">Phase 5 <small>Livraison</small></h2>
