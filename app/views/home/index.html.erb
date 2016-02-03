@@ -170,18 +170,15 @@
                                         <tbody>
                                 <% @projets.each do |projet| %>
                                 <% if projet.date_avance_2 %>
-                                    <% d=  projet.date_avance_2 %>
-                                    
-                                <% end %>
-
-                                <% if projet.date_avance_4 %>
-                                    <% d_fin= projet.date_avance_4 %>
-                                    <% d_renouve= date_format(d_fin+ 1.year) %>
-                                    <% d_warning= date_format(Time.now + 11.months) %>
+                                    <% d=  projet.date_avance_2 %>                                
                                 <% end %>
                                            
 
                       <% if Project.find(projet.id).avance >= 4 %>
+
+                       <% d_fin= projet.date_avance_4 %>
+                      <% d_renouve= date_format(d_fin+ 1.year) %>
+                        <% d_warning= date_format(Time.now + 11.months) %>
 
                          <% if d_renouve <=  d_warning %>
                            <tr class="danger">
