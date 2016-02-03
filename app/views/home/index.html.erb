@@ -177,8 +177,8 @@
                       <% if projet.date_avance_4 %>
 
                       <% d_fin= projet.date_avance_4 %>
-                      <% d_renouve= (d_fin+ 1.year) %>
-                      <% d_warning= (Time.now+ 11.months) %>
+                      <% d_renouve= d_fin+ 1.years %>
+                      <% d_warning= Time.now+ 11.months %>
 
                          <% if d_renouve <= d_warning %>
                            <tr class="danger">
