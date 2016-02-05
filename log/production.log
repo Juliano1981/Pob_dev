@@ -1,0 +1,232 @@
+D, [2016-02-05T14:19:50.948182 #37238] DEBUG -- :   [1m[36m (3.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+D, [2016-02-05T14:19:50.949836 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2016-02-05T14:19:50.954121 #37238] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+D, [2016-02-05T14:19:50.955854 #37238] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+I, [2016-02-05T14:19:50.962931 #37238]  INFO -- : Migrating to Tableclients (20151228102453)
+D, [2016-02-05T14:19:50.963712 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:50.973070 #37238] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151228102453"]]
+D, [2016-02-05T14:19:50.974258 #37238] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+I, [2016-02-05T14:19:50.974338 #37238]  INFO -- : Migrating to TableClientsinit (20151228103418)
+D, [2016-02-05T14:19:50.974914 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2016-02-05T14:19:50.976848 #37238] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "clients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
+D, [2016-02-05T14:19:50.977348 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "nom" varchar
+D, [2016-02-05T14:19:50.977801 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "prenom" varchar[0m
+D, [2016-02-05T14:19:50.978183 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "entreprise" varchar
+D, [2016-02-05T14:19:50.978564 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "rue" varchar[0m
+D, [2016-02-05T14:19:50.978968 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "ville" varchar
+D, [2016-02-05T14:19:50.979344 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "tel" integer[0m
+D, [2016-02-05T14:19:50.979756 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "description" text
+D, [2016-02-05T14:19:50.980144 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "contrat_type" varchar[0m
+D, [2016-02-05T14:19:50.980527 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "email" varchar
+D, [2016-02-05T14:19:50.981628 #37238] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151228103418"]]
+D, [2016-02-05T14:19:50.982703 #37238] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+I, [2016-02-05T14:19:50.982778 #37238]  INFO -- : Migrating to AddAvatarColumnsToClients (20151228104145)
+D, [2016-02-05T14:19:50.983333 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:50.984579 #37238] DEBUG -- :   [1m[35m (0.6ms)[0m  ALTER TABLE "clients" ADD "avatar_file_name" varchar
+D, [2016-02-05T14:19:50.984979 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "avatar_content_type" varchar[0m
+D, [2016-02-05T14:19:50.985284 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "clients" ADD "avatar_file_size" integer
+D, [2016-02-05T14:19:50.985599 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "clients" ADD "avatar_updated_at" datetime[0m
+D, [2016-02-05T14:19:50.986706 #37238] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151228104145"]]
+D, [2016-02-05T14:19:50.987708 #37238] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+I, [2016-02-05T14:19:50.987804 #37238]  INFO -- : Migrating to TableProjects (20151228154359)
+D, [2016-02-05T14:19:50.988483 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2016-02-05T14:19:50.989588 #37238] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
+D, [2016-02-05T14:19:50.990089 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "date" datetime
+D, [2016-02-05T14:19:50.990500 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD "domaine" varchar[0m
+D, [2016-02-05T14:19:50.990885 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "site_type" varchar
+D, [2016-02-05T14:19:50.991272 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD "multilingue" varchar[0m
+D, [2016-02-05T14:19:50.991668 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "avancé" integer
+D, [2016-02-05T14:19:50.992063 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD "techno_type" varchar[0m
+D, [2016-02-05T14:19:50.992489 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "description" text
+D, [2016-02-05T14:19:50.992911 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD "client_id" integer[0m
+D, [2016-02-05T14:19:50.993553 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")
+D, [2016-02-05T14:19:50.994695 #37238] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151228154359"]]
+D, [2016-02-05T14:19:50.995935 #37238] DEBUG -- :   [1m[35m (1.0ms)[0m  commit transaction
+I, [2016-02-05T14:19:50.996033 #37238]  INFO -- : Migrating to AddNoteProjects (20160102214848)
+D, [2016-02-05T14:19:50.996693 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:50.997653 #37238] DEBUG -- :   [1m[35m (0.6ms)[0m  ALTER TABLE "projects" ADD "date_avance_2" datetime
+D, [2016-02-05T14:19:50.998173 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD "note" text[0m
+D, [2016-02-05T14:19:50.998703 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "date_avance_3" varchar
+D, [2016-02-05T14:19:50.999355 #37238] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mALTER TABLE "projects" ADD "date_avance_4" varchar[0m
+D, [2016-02-05T14:19:51.000585 #37238] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160102214848"]]
+D, [2016-02-05T14:19:51.001631 #37238] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+I, [2016-02-05T14:19:51.001731 #37238]  INFO -- : Migrating to DeviseCreateUsers (20160109164211)
+D, [2016-02-05T14:19:51.002569 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2016-02-05T14:19:51.006404 #37238] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+D, [2016-02-05T14:19:51.008066 #37238] DEBUG -- :   [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+D, [2016-02-05T14:19:51.008926 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.009549 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+D, [2016-02-05T14:19:51.010858 #37238] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160109164211"]]
+D, [2016-02-05T14:19:51.012143 #37238] DEBUG -- :   [1m[35m (1.0ms)[0m  commit transaction
+I, [2016-02-05T14:19:51.012228 #37238]  INFO -- : Migrating to AddTarifToProject (20160128161427)
+D, [2016-02-05T14:19:51.012844 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:51.013863 #37238] DEBUG -- :   [1m[35m (0.5ms)[0m  ALTER TABLE "projects" ADD "tarif" float
+D, [2016-02-05T14:19:51.015021 #37238] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160128161427"]]
+D, [2016-02-05T14:19:51.016037 #37238] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+I, [2016-02-05T14:19:51.016110 #37238]  INFO -- : Migrating to ChangeDateAvance (20160205120117)
+D, [2016-02-05T14:19:51.016689 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:51.019230 #37238] DEBUG -- :   [1m[35m (0.8ms)[0m  CREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" varchar, "date_avance_4" varchar, "tarif" float) 
+D, [2016-02-05T14:19:51.019647 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.020655 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")
+D, [2016-02-05T14:19:51.021689 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "projects"[0m
+D, [2016-02-05T14:19:51.022603 #37238] DEBUG -- :   [1m[35m (0.7ms)[0m  DROP TABLE "projects"
+D, [2016-02-05T14:19:51.024137 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" varchar, "tarif" float) [0m
+D, [2016-02-05T14:19:51.024500 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.025554 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+D, [2016-02-05T14:19:51.026433 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "aprojects"
+D, [2016-02-05T14:19:51.027123 #37238] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mDROP TABLE "aprojects"[0m
+D, [2016-02-05T14:19:51.028807 #37238] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" varchar, "tarif" float) 
+D, [2016-02-05T14:19:51.029176 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.030549 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")
+D, [2016-02-05T14:19:51.031966 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "projects"[0m
+D, [2016-02-05T14:19:51.032758 #37238] DEBUG -- :   [1m[35m (0.6ms)[0m  DROP TABLE "projects"
+D, [2016-02-05T14:19:51.034653 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" datetime, "tarif" float) [0m
+D, [2016-02-05T14:19:51.035036 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.036101 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+D, [2016-02-05T14:19:51.037221 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "aprojects"
+D, [2016-02-05T14:19:51.037549 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mDROP TABLE "aprojects"[0m
+D, [2016-02-05T14:19:51.039026 #37238] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160205120117"]]
+D, [2016-02-05T14:19:51.042409 #37238] DEBUG -- :   [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+I, [2016-02-05T14:19:51.042536 #37238]  INFO -- : Migrating to ChangetypeDate (20160205120833)
+D, [2016-02-05T14:19:51.044168 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2016-02-05T14:19:51.046266 #37238] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" datetime, "tarif" float) [0m
+D, [2016-02-05T14:19:51.046769 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.047902 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")[0m
+D, [2016-02-05T14:19:51.049110 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  SELECT * FROM "projects"
+D, [2016-02-05T14:19:51.049846 #37238] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mDROP TABLE "projects"[0m
+D, [2016-02-05T14:19:51.051342 #37238] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" varchar, "date_avance_4" datetime, "tarif" float) 
+D, [2016-02-05T14:19:51.051790 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.056522 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")
+D, [2016-02-05T14:19:51.057579 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aprojects"[0m
+D, [2016-02-05T14:19:51.057894 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  DROP TABLE "aprojects"
+D, [2016-02-05T14:19:51.059393 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" varchar, "date_avance_4" datetime, "tarif" float) [0m
+D, [2016-02-05T14:19:51.059739 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.060651 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")[0m
+D, [2016-02-05T14:19:51.061540 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "projects"
+D, [2016-02-05T14:19:51.062207 #37238] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mDROP TABLE "projects"[0m
+D, [2016-02-05T14:19:51.063418 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" varchar, "date_avance_4" varchar, "tarif" float) 
+D, [2016-02-05T14:19:51.063733 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.064748 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  CREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")
+D, [2016-02-05T14:19:51.065701 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aprojects"[0m
+D, [2016-02-05T14:19:51.065975 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  DROP TABLE "aprojects"
+D, [2016-02-05T14:19:51.067186 #37238] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160205120833"]]
+D, [2016-02-05T14:19:51.068445 #37238] DEBUG -- :   [1m[35m (1.0ms)[0m  commit transaction
+I, [2016-02-05T14:19:51.068536 #37238]  INFO -- : Migrating to ChangeDate (20160205121126)
+D, [2016-02-05T14:19:51.069139 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-02-05T14:19:51.071648 #37238] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" varchar, "date_avance_4" varchar, "tarif" float) 
+D, [2016-02-05T14:19:51.072019 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.072976 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  CREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")
+D, [2016-02-05T14:19:51.074175 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "projects"[0m
+D, [2016-02-05T14:19:51.074758 #37238] DEBUG -- :   [1m[35m (0.4ms)[0m  DROP TABLE "projects"
+D, [2016-02-05T14:19:51.076010 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" varchar, "tarif" float) [0m
+D, [2016-02-05T14:19:51.076346 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.077381 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+D, [2016-02-05T14:19:51.078342 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "aprojects"
+D, [2016-02-05T14:19:51.078636 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mDROP TABLE "aprojects"[0m
+D, [2016-02-05T14:19:51.081011 #37238] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aprojects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" varchar, "tarif" float) 
+D, [2016-02-05T14:19:51.081479 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_projects_on_client_id' AND type='index'
+[0m
+D, [2016-02-05T14:19:51.082487 #37238] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE  INDEX "tindex_aprojects_on_client_id" ON "aprojects" ("client_id")
+D, [2016-02-05T14:19:51.083531 #37238] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "projects"[0m
+D, [2016-02-05T14:19:51.084307 #37238] DEBUG -- :   [1m[35m (0.6ms)[0m  DROP TABLE "projects"
+D, [2016-02-05T14:19:51.086672 #37238] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "domaine" varchar, "site_type" varchar, "multilingue" varchar, "avancé" integer, "techno_type" varchar, "description" text, "client_id" integer, "date_avance_2" datetime, "note" text, "date_avance_3" datetime, "date_avance_4" datetime, "tarif" float) [0m
+D, [2016-02-05T14:19:51.087138 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aprojects_on_client_id' AND type='index'
+
+D, [2016-02-05T14:19:51.088407 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+D, [2016-02-05T14:19:51.096888 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "aprojects"
+D, [2016-02-05T14:19:51.097263 #37238] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mDROP TABLE "aprojects"[0m
+D, [2016-02-05T14:19:51.098672 #37238] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160205121126"]]
+D, [2016-02-05T14:19:51.100254 #37238] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+I, [2016-02-05T14:19:51.100342 #37238]  INFO -- : Migrating to Changformatdate (20160205131133)
+D, [2016-02-05T14:19:51.100946 #37238] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2016-02-05T14:19:51.102361 #37238] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160205131133"]]
+D, [2016-02-05T14:19:51.103538 #37238] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
