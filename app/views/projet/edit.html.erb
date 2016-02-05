@@ -19,7 +19,6 @@
             </div>
            </div> 
        </div>
-<%= @date %>
     <% else %>
    <div class="page-header" style="padding:2%">
 
@@ -40,7 +39,8 @@
        </div>
     <% end %>
      
-    
+  La date du jour : <%= aujourdhui= Date.today %>
+  
 
              <% if flash[:success] %>
     <div class="alert alert-success animated bounceInUp"><%= flash[:success] %></div>
