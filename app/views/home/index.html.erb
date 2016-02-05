@@ -188,7 +188,8 @@
                                                 <% if Project.find(projet.id).client.contrat_type == "Création simple" %>
                                                 Site internet livré le <%= date_format(fin) %>
                                                 <% else %>
-                                                  Expiration de l'hébergement le <%= date_format(fin+ 360.days) %> <sup>*</sup> </td>
+                                                  Expiration de l'hébergement le <%= 
+                                                  fin+ 360.days %> <sup>*</sup> </td>
                                                     <% end %>
                                        </td> 
 
