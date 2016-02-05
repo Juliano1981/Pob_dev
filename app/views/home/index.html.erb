@@ -169,6 +169,8 @@
                                         </thead>
                                         <tbody>
                                 <% @projets.each do |projet| %>
+
+
                                 <% if projet.date_avance_2 %>
                                     <% d=  projet.date_avance_2 %>                                
                                 <% end %>
@@ -176,21 +178,23 @@
 
                       <% if projet.date_avance_4 %>
 
-                      <% d_fin= projet.date_avance_4 %>
-                      <% d_renouve= date_format(d_fin+ 365.days) %>
-                      <% d_warning= date_format(d_fin+ 11.months) %>
+                      <% dfin= projet.date_avance_4 %>
+                      <% drenouve= date_format(dfin+ 365.days) %>
+                      <% dwarning= date_format(dfin+ 330.days) %>
 
 
-                         <% if Time.now >= d_warning %>
+                         <% if date_format(Time.now) >= dwarning %>
                            <tr class="danger">
                             <% else %>
                             <tr class="success">
                          <% end %>
+
+
                                   <td style="text-align:center"><%= projet.domaine %></td>
                                                 
 
-                                                            <td style="text-align:center" colspan="2">
-                                                           Le domaine devra être renouvelé avant le <%= d_renouve %></td> 
+                                                <td style="text-align:center" colspan="2">
+                                                           Le domaine devra être renouvelé avant le <%= drenouve %></td> 
 
                                                 <td style="text-align:center">
                                                     <% if projet.tarif %>
