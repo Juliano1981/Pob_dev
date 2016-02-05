@@ -5,7 +5,7 @@ before_action :authenticate_user!
   def index
     @clients = Client.all
     @var_id = Client.last.id + 1
-    @projets = Project.all
+    @projets = Project.order(:date)
     @tarifs= Project.where.not(tarif: nil)
   end
 
