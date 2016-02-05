@@ -1,25 +1,5 @@
 <div class="container">
-  <% if Project.find(params[:id]).avance >= 4 %>
-   <div class="page-header" style="background:#F2F2F2;padding:2%;border: 2px solid #OOO;">
-
- <div class="row">
-       <div class="col-xs-12 col-md-8">
-         <h1> <i class="glyphicon glyphicon-list-alt"></i> Projet livré </h1>
-           <small><i class="glyphicon glyphicon-tags"></i> <%= @projet.domaine %></small></h1>
-           <p class="bg-warning padding" style="color:#000"><i class="glyphicon glyphicon-bookmark"></i>Entreprise : <%= Client.find(@projet.client_id).entreprise %><br/>
-          Cette fiche fait office de <i>"suivi client"</i>.
-           </p>
-          </div> 
-              <div class="col-xs-6 col-md-4">
-                <%= form_tag "/projet/#{@projet.id}", method: "delete" do %>
-                <input data-confirm="Êtes vous sûr de vouloir supprimer ce projet PoB ?" data-method="delete" rel="nofollow" type="submit" confirm: "" class=" delete_post btn btn-danger" value="Supprimer ce projet de PoB" />
-                <% end %>
-                <br/>
-               <a href="/client/<%= @projet.client_id %>" class="btn btn-default inline"><i class="glyphicon glyphicon-user"></i> Fiche client </a>
-            </div>
-           </div> 
-       </div>
-    <% else %>
+  
    <div class="page-header" style="padding:2%">
 
      <div class="row">
@@ -37,7 +17,6 @@
             </div>
            </div> 
        </div>
-    <% end %>
      
   La date du jour : <%= aujourdhui= Date.today %>
   
@@ -152,7 +131,7 @@ Phase 4 <small> validée </small></h2>
                        <%= form_for @projet, :url => "/projet/#{@projet.id}", :html => { :multipart => true } do |form| %>
                        <%= form.check_box :avance, {:checked=>true, :style => "visibility:hidden"
                       }, 3, 2 %> 
-                      <%= form.check_box :date_avance_3, {:checked=>true, :style => "visibility:hidden"
+                      <%= form.check_box :date_avance_5, {:checked=>true, :style => "visibility:hidden"
                       }, @date, nil %> 
 
                           <%= form.submit "Validation du cycle 4", class: "btn btn-success" %>
@@ -175,7 +154,7 @@ Site en ligne depuis le <small> <%= date_format(Project.find(params[:id]).date_a
                        <%= form.check_box :avance, {:checked=>true, :style => "visibility:hidden"
                       }, 4, 3 %> 
 
-                        <%= form.check_box :date_avance_4, {:checked=>true, :style => "visibility:hidden"
+                        <%= form.check_box :date_avance_6, {:checked=>true, :style => "visibility:hidden"
                       }, @date, nil %> 
 
                       <%= form.submit "Valider la livraison du site", class: "btn btn-success" %>

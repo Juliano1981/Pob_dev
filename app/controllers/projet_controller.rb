@@ -25,7 +25,7 @@ class ProjetController < ApplicationController
 
 
 def user_params
-  params.require(:project).permit( :date, :domaine, :site_type, :multilingue, :avance, :techno_type, :description, :note, :date_avance_2, :date_avance_3, :date_avance_4, :tarif)
+  params.require(:project).permit( :date, :domaine, :site_type, :multilingue, :avance, :techno_type, :description, :note, :date_avance_2, :date_avance_5, :date_avance_6, :tarif)
 end
 
   def update
