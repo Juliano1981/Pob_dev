@@ -177,10 +177,10 @@
                       <% if projet.date_avance_4 %>
 
                       <% d_fin= projet.date_avance_4 %>
-                      <% d_renouve= d_fin+ 1.years %>
-                      <% d_warning= Time.now+ 11.months %>
+                      <% d_renouve= date_format(d_fin+ 1.years) %>
+                      <% d_warning= date_format(Time.now+ 11.months) %>
 
-                         <% if d_renouve <= d_warning %>
+                         <% if d_renouve >= d_warning %>
                            <tr class="danger">
                             <% else %>
                             <tr class="success">
@@ -189,7 +189,7 @@
                                                 
 
                                                             <td style="text-align:center" colspan="2">
-                                                           Le domaine devra être renouvelé avant le <%= date_format(d_renouve) %></td> 
+                                                           Le domaine devra être renouvelé avant le <%= d_renouve %></td> 
 
                                                 <td style="text-align:center">
                                                     <% if projet.tarif %>
