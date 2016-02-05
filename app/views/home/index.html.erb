@@ -169,28 +169,36 @@
                                         </thead>
                                         <tbody>
                                 <% @projets.each do |projet| %>
-
-
                                 <% if projet.date_avance_2 %>
                                     <% d=  projet.date_avance_2 %>                                
                                 <% end %>
                                            
 
                       <% if projet.date_avance_6 %>
-                         <% fin=  projet.date_avance_6 %>                                
+
+                      <% d_fin= projet.date_avance_6 %>
+                      <% d_renouve= d_fin+ 365.days %>
+                      <% d_warning= d_fin+11.months %>
+
+
+                         <% if Date.today >= d_warning %>
+                           <tr class="danger">
+                            <% else %>
                             <tr class="success">
-
-
+                         <% end %>
                                   <td style="text-align:center"><%= projet.domaine %></td>
                                                 
 
-                                                <td style="text-align:center" colspan="2">
-                                                <% if Project.find(projet.id).client.contrat_type == "Création simple" %>
-                                                Site internet livré le <%= date_format(fin) %>
-                                                <% else %>
-                                                  Expiration de l'hébergement le <%= date_format(fin+ 365.days) %> </td>
-                                                    <% end %>
-                                       </td> 
+                                    <td style="text-align:center" colspan="2">
+           
+         <% if Project.find(projet.id).client.contrat_type == "Création simple" %>
+      Site livré le <%= date_format(d_fin) %> <span class="text-muted">(création simple)</span>
+
+<% else %>
+        Expiration de l'abonnement le <strong><%= date_format(d_renouve) %></strong>
+
+<% end %>
+    </td> 
 
                                                 <td style="text-align:center">
                                                     <% if projet.tarif %>
@@ -233,7 +241,7 @@
                                     </table>
                                 </div>
                                 <div class="text-right">
-                                  <span class="label label-default">Total des encours : </span>
+                                  <span class="label label-default">Chiffre d'affaire : </span>
                                   <span class="label label-success"><%= Project.sum(:tarif) %> €</span>
                                   
                                 </div>
