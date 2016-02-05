@@ -178,23 +178,15 @@
 
                       <% if projet.date_avance_4 %>
 
-                      <% dfin= projet.date_avance_4 %>
-                      <% drenouve= date_format(dfin+ 365.days) %>
-                      <% dwarning= date_format(dfin+ 330.days) %>
 
-
-                         <% if date_format(Time.now) >= dwarning %>
-                           <tr class="danger">
-                            <% else %>
                             <tr class="success">
-                         <% end %>
 
 
                                   <td style="text-align:center"><%= projet.domaine %></td>
                                                 
 
                                                 <td style="text-align:center" colspan="2">
-                                                           Le domaine devra être renouvelé avant le <%= drenouve %></td> 
+                                      Le domaine devra être renouvelé avant le drenouve </td> 
 
                                                 <td style="text-align:center">
                                                     <% if projet.tarif %>
