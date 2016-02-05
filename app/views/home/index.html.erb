@@ -177,11 +177,7 @@
                                            
 
                       <% if projet.date_avance_4 %>
-
-                      <% dfin= projet.date_avance_4 %>
-                      <% drenouve= date_format(dfin+ 365.days) %>
-
-
+                         <% fin=  projet.date_avance_4 %>                                
                             <tr class="success">
 
 
@@ -189,7 +185,12 @@
                                                 
 
                                                 <td style="text-align:center" colspan="2">
-                                      Le domaine devra être renouvelé avant le <%= drenouve %> </td> 
+                                                <% if Project.find(projet.id).client.contrat_type == "Création simple" %>
+                                                Site internet livré le <%= date_format(fin) %>
+                                                <% else %>
+                                                  Expiration de l'hébergement le <%= date_format(fin+ 360.days) %> <sup>*</sup> </td>
+                                                    <% end %>
+                                       </td> 
 
                                                 <td style="text-align:center">
                                                     <% if projet.tarif %>
@@ -230,6 +231,7 @@
 
                                         </tbody>
                                     </table>
+                                    <i>* Attention de vérifier si le client à choisi une formule avec hébergement.</i>
                                 </div>
                                 <div class="text-right">
                                   <span class="label label-default">Total des encours : </span>
