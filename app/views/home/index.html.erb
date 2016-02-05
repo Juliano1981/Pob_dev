@@ -236,6 +236,26 @@
 
                                             </tr>
                                 <% end %>
+ 
+
+
+                               <tr class="active">
+                                  <td colspan='2' style="text-align:center">
+                                   Accomptes encaissés <span class="text-muted">(projets en cours)</span>
+                                  </td>
+                                <td colspan='2' style="text-align:center">
+                                   Revenus générés <span class="text-muted">(projets soldés)</span>
+                                </td>
+                                </tr>
+
+                               <tr class="active">
+                                  <td colspan='2' style="text-align:center">
+                                   <%= (Project.where(:avance => 2).sum(:tarif) / 3).round %> €
+                                  </td>
+                                <td colspan='2' style="text-align:center">
+                                   <%= Project.where(:avance => 4).sum(:tarif) %> €
+                                </td>
+                                </tr>
 
                                         </tbody>
                                     </table>
