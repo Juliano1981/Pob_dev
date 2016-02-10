@@ -78,23 +78,23 @@
                             <p class="text-muted">Chaque étape doit être renseignée avec précision. Le travail qui reste à accomplir doit être listé et daté.</P>
 
 
-
-      <div class="form-group etape">
+      <% if Project.find(params[:id]).avance < 1 %>
+                            <div class="form-group etape">
                             <h4><i class="glyphicon glyphicon-edit"></i> Suivi d'entretien</h4>
                               <p class="text-muted">L'entretien (sur-place ou téléphonique) effectué. </p>
 
                             <%= form.check_box ("avance") %> Entretien avec le responsable projet sera enregistré !
 
-    </div>
+                           </div>
+    <% end %>
 
-
-                           <%= form.submit "Mettre à jour", class: "btn btn-success" %>
+                           <%= form.submit "Mettre à jour ", class: "btn btn-success ok" %>
 
             <% end %>
 <%= tinymce %>
 </div>
         <div class="row"> 
-               <div class="col-xs-6 col-md-4 bordure">
+               <div class="col-xs-6 col-md-4 bordure border_light">
 
               <% if Project.find(params[:id]).avance >= 2 %>
               <h2 class="content"><i class="glyphicon glyphicon-ok"></i>
@@ -122,7 +122,7 @@ Phase 3</h2>
                           <% end %>
 
                 </div>
-                     <div class="col-xs-6 col-md-4 bordure">
+                     <div class="col-xs-6 col-md-4 bordure border_light">
 
                       <% if Project.find(params[:id]).avance >= 3 %>
                       <h2 class="content"><i class="glyphicon glyphicon-ok"></i>
@@ -149,7 +149,7 @@ Phase 4 <small> validée </small></h2>
               
                        </div>
 
-                     <div class="col-xs-6 col-md-4 bordure">
+                     <div class="col-xs-6 col-md-4 bordure ">
 
                       <% if Project.find(params[:id]).avance >= 4 %>
                       <h2 class="content"><i class="glyphicon glyphicon-ok"></i>

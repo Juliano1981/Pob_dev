@@ -28,6 +28,9 @@
     </div>
   <% end %>
 
+
+<div class="container-fluid">
+  <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="glyphicon glyphicon-user"></i> Listes clients</h3>
@@ -40,7 +43,7 @@
     </tr>
 <% @clients.each do |client| %>
 <tr>
-<td><a href="/projet/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.entreprise %>
+<td><a href="/projet/<%= client.id %>"><i class="fa fa-fw fa-calendar"></i> <%= client.nom %>
 </td>
 <td><a href="mailto:<%= client.email%>" class="btn btn-info"><i class="glyphicon glyphicon-envelope"></i></a>
 </td>
@@ -152,6 +155,8 @@
 
 </div>
 
+</div>
+</div>
     <div class="row">
 
 <H3><i class="glyphicon glyphicon-map-marker"></i> Projet en cours </H3>
@@ -250,10 +255,11 @@
 
                                <tr class="active" style="border-bottom:4px solid #000">
                                   <td colspan='2' style="text-align:center">
-                                   <%= (Project.where(:avance => 2).sum(:tarif) / 3).round %> €
+                                   <%= Project.where(avance: [2,3]).sum(:tarif) %>
+                                  
                                   </td>
                                 <td colspan='2' style="text-align:center">
-                                   <%= Project.where(:avance => 4).sum(:tarif) %> €
+                                   <%= @encours=Project.where(:avance => 4).sum(:tarif) %> €
                                 </td>
                                 </tr>
 
@@ -261,8 +267,8 @@
                                     </table>
                                 </div>
                                 <div class="text-right">
-                                  <span class="label label-default">Chiffre d'affaire : </span>
-                                  <span class="label label-success"><%= Project.sum(:tarif) %> €</span>
+                                  <span class="label label-default">Chiffre d'affaires : </span>
+                                  <span class="label label-success"><%= Project.where(avance: [2,3,4]).sum(:tarif) %></span>
                                   
                                 </div>
                             </div>

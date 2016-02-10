@@ -16,15 +16,23 @@
 
 @charset "UTF-8";
 
+input.ok{
+width: 60%;
+line-height: 1.5em;
+font-size: 1.5em;
+margin: 3% 20%;
+
+}
+
 .padding{
 padding:0.4%;
 }
 
 .bordure{
-border:1px solid gray ;
+background: rgba(206, 212, 215, 0.47);
 padding:2%;
-border-radius: 5px;
-min-height: 220px;
+min-height: 250px;
+
 }
 
 .border_light{
@@ -38,7 +46,6 @@ border-right-color:gray ;
 border-top-width:1px;
 border-top-style:dotted;
 border-top-color:gray ;
-padding:2% 0;
 
 }
 
