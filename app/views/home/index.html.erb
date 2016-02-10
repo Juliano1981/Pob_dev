@@ -255,7 +255,7 @@
 
                                <tr class="active" style="border-bottom:4px solid #000">
                                   <td colspan='2' style="text-align:center">
-                                   <%= Project.where(avance: [2,3]).sum(:tarif) %>
+                                   <%= (Project.where(avance: [2,3]).sum(:tarif) / 3).round %>
                                   
                                   </td>
                                 <td colspan='2' style="text-align:center">
