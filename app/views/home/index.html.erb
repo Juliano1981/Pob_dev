@@ -120,7 +120,7 @@
 <td><%= Client.find(projet.client_id).entreprise %></td>
 <td>M.<%= Client.find(projet.client_id).nom %></td>
 <td>
-<% if projet.avance %> 
+<% if projet.avance >= 1%> 
 <% @value = projet.avance * 25 %>
 
 <div class="progress">

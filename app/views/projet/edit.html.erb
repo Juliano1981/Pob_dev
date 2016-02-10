@@ -18,7 +18,6 @@
            </div> 
        </div>
      
-  La date du jour : <%= aujourdhui= Date.today %>
   
 
              <% if flash[:success] %>
@@ -79,6 +78,16 @@
                             <p class="text-muted">Chaque étape doit être renseignée avec précision. Le travail qui reste à accomplir doit être listé et daté.</P>
 
 
+
+      <div class="form-group etape">
+                            <h4><i class="glyphicon glyphicon-edit"></i> Suivi d'entretien</h4>
+                              <p class="text-muted">L'entretien (sur-place ou téléphonique) effectué. </p>
+
+                            <%= form.check_box ("avance") %> Entretien avec le responsable projet sera enregistré !
+
+    </div>
+
+
                            <%= form.submit "Mettre à jour", class: "btn btn-success" %>
 
             <% end %>
@@ -97,7 +106,7 @@ Phase 3</h2>
 
                <%= form.submit "L'acompte à été encaissé ", class: "btn btn-success", :disabled => true %>
                <% end %>
-              <%  else %>
+              <% else %>
               
               <h2 class="content">Phase 3 <small> Réception de l'accompte </small> </h2>
               <p class="text-muted">Cet enregistrement valide le début des travaux et compte pour anniversaire dans la gestion des hébergements.</p>
