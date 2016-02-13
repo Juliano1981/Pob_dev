@@ -57,12 +57,40 @@
 
                   </div>
 
+                  <div style="clear:both;height:20px"></div>
+
                  <div class="row">
-                          <div class="col-xs-6 col-md-4">
+                          <div class="col-xs-6 col-md-4 border_light">
                               <div class="form-group">
                                 <h4><i class="glyphicon glyphicon-euro"></i> Tarif retenu pour projet</h4>
                                 <p class="text-muted">Prix indiqué correspond à la tarification TTC formulé sur le devis.</p>
                                 <%= form.text_field :tarif , class: "form-control" , :placeholder => "Ex : 1000"%>
+                            </div>
+                          </div>
+
+                           <% if Client.find(@projet.client_id).contrat_type == "Création simple" %>
+
+                              <div class="col-xs-6 col-md-4 border_light">
+                              <div class="form-group">
+                                <h4><i class="glyphicon glyphicon-tasks"></i> Prix de l'abonnement annuel <small> En fonction du type de site </small></h4>
+                                <p class="text-muted">Le prix de l'hebergement est fixé par rapport à des critères de performance et de gestion de BDD.</p>
+                              <p class="text-warning">Le client n'a pas choisi une formule avec hebergement</p>
+                            </div>
+                             </div>
+                           <% else %>
+                            <div class="col-xs-6 col-md-4 border_light">
+                              <div class="form-group">
+                                <h4><i class="glyphicon glyphicon-tasks"></i> Prix de l'abonnement annuel <small> En fonction du type de site </small></h4>
+                                <p class="text-muted">Le prix de l'hebergement est fixé par rapport à des critères de performance et de gestion de BDD.</p>
+                                 <%= form.text_field :tarif_abo , class: "form-control" , :placeholder => "Ex : 70"%>
+                            </div>
+                             </div>
+                             <% end %>
+                              <div class="col-xs-6 col-md-4">
+                              <div class="form-group">
+                                <h4><i class="glyphicon glyphicon-hourglass"></i> Durée du projet <small> Nb de jours </small></h4>
+                                <p class="text-muted">Durée de conception du projet à partir du versement de l'accompte.</p>
+                                <%= form.select :duree_crea, options_for_duree,{:prompt => "Selectionnez une durée" }, {class: "form-control"} %>
                             </div>
                           </div>
 
